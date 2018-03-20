@@ -36,26 +36,26 @@ export default class LoginPanel extends React.Component {
   render () {
     return (
       <form className="login-form" onSubmit={this._logIn}>
-        <h1>Log In</h1>
+        {/* <h1>Log In</h1>
         <p className="alert alert-info" role="alert">
           You must be logged in to view pages
         </p>
-        {this._renderError()}
+        {this._renderError()} */}
 
-        <label className="form-group">
+        {/* <label className="form-group">
           <span className="info-text">E-mail Address:</span>
           <input className="form-control" type="text" name="email" onChange={this._updateEmail} />
-        </label>
+        </label> */}
 
-        <label className="form-group">
+        {/* <label className="form-group">
           <span className="info-text">Password:</span>
           <input className="form-control" type="password" name="password" onChange={this._updatePassword} />
-        </label>
+        </label> */}
 
-        <div className="login-form__footer">
-          <input className="login-form__submit btn btn-primary" type="submit" value="Log In" />
+        <div className="login-form__footer" >
+          <input className="login-form__submit btn btn-primary" type="submit" value="Redirect" />
           {' '}
-          <button className="login-form__cancel btn btn-default" onClick={this._cancel}>Cancel</button>
+          {/* <button className="login-form__cancel btn btn-default" onClick={this._cancel}>Cancel</button> */}
         </div>
       </form>
     );
@@ -84,11 +84,11 @@ export default class LoginPanel extends React.Component {
   _logIn (event) {
     event.preventDefault();
 
-    if (!this.state.email || !this.state.password) {
-      return this.setState({
-        error: 'Please enter an e-mail and password.'
-      });
-    }
+    // if (!this.state.email || !this.state.password) {
+    //   return this.setState({
+    //     error: 'Please enter an e-mail and password.'
+    //   });
+    // }
 
     this.context.api.logIn(this.state.email, this.state.password)
       .then(userData => {

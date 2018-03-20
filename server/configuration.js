@@ -1,7 +1,7 @@
 'use strict';
 
 const defaultValues = {
-  WEB_MONITORING_DB_URL: 'https://api-staging.monitoring.envirodatagov.org'
+  WEB_MONITORING_DB_URL: 'http://localhost:3000'
 };
 
 const clientFields = [

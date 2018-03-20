@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link, NavLink} from 'react-router-dom';
-
 /**
  * @typedef {Object} NavBarProps
  * @property {Function} logOut Callback requesting the user be logged out
@@ -18,6 +17,7 @@ export default ({children = null, title = 'EDGI Web Monitoring', user = null, sh
     <div className="container-fluid">
       <div className="navbar-header">
         <Link to="/" className="navbar-brand">{title}</Link>
+        <img src={require("../img/Internet_Archive_logo.svg.png")} height="50" width="50" style={ {backgroundColor: "#ffffff"} }/> 
       </div>
       <ul className="nav navbar-nav">
         <li>{renderNavLink('Assigned Pages', 'assignedPages', pageFilter, setPageFilter)}</li>
@@ -33,15 +33,15 @@ function renderUserInfo (user, showLogin, logOut) {
   if (user) {
     return (
       <span className="auth-status">
-        {user.email}
-        {' '}
+        {/* {user.email}
+        {' '} */}
         <button className="btn btn-link" onClick={logOut}>(Log out)</button>
       </span>
     );
   }
-  else {
-    return <button className="auth-status btn btn-link" onClick={showLogin}>Log In</button>;
-  }
+  // else {
+  //   return <button className="auth-status btn btn-link" onClick={showLogin}>Log In</button>;
+  // }
 }
 
 function renderNavLink (linkText, filterToMatch, pageFilter, setPageFilter) {

@@ -106,6 +106,7 @@ export default class WebMonitoringDb {
       this._loadToken();
       // Explicit check because https://bugs.chromium.org/p/chromium/issues/detail?id=465666
       if (this.authToken) {
+        console.log("constructor");
         this._verifyToken(true);
       }
     }
@@ -117,12 +118,13 @@ export default class WebMonitoringDb {
      * @param {string} password
      * @returns {Promise<Object>}
      */
-  logIn (user, password) {
+  logIn () {
+    console.log("Login")
     return fetch(this._createUrl('/users/sign_in'), {
       body: JSON.stringify({
         user: {
-          email: user,
-          password
+          email: "seed-admin@example.com",
+          password: "PASSWORD"
         }
       }),
       headers: new Headers({
@@ -138,7 +140,7 @@ export default class WebMonitoringDb {
         if (sessionData.error) {
           throw new Error(sessionData.error);
         }
-
+        console.log("saveToken");
         this.authToken = sessionData.token;
         this._saveToken(this.authToken);
         this.isTokenVerfied = true;
@@ -165,7 +167,9 @@ export default class WebMonitoringDb {
      * @returns {Promise<boolean>}
      */
   isLoggedIn (verify) {
+    console.log('isLoggedIn')
     if (this.authToken && (verify || !this.isTokenVerfied)) {
+      console.log("verifyToken");
       return this._verifyToken()
         .then(() => true)
         .catch(() => false);
@@ -300,6 +304,7 @@ export default class WebMonitoringDb {
     };
 
     if (this.authToken) {
+      console.log("includeee");
       final_options.credentials = 'include';
       final_options.headers.Authorization = this._authHeader();
     }
@@ -327,10 +332,12 @@ export default class WebMonitoringDb {
 
   _verifyToken (refresh) {
     if (!this.authToken) {
+      console.log("_verifyToken");
       return Promise.reject(new Error('No token to verify'));
     }
 
     if (!this.tokenVerification) {
+      console.log("tokenVerification");
       const url = refresh ? '/users/sign_in' : '/users/session';
       this.tokenVerification = fetch(this._createUrl(url), {
         credentials: 'include',
@@ -375,6 +382,7 @@ export default class WebMonitoringDb {
   }
 
   _authHeader () {
+    console.log("_authHeader");
     return `Bearer ${this.authToken}`;
   }
 }
