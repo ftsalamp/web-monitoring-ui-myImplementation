@@ -153,6 +153,7 @@ export default class ChangeView extends React.Component {
   }
 
   renderVersionSelector (page) {
+    console.log("versionSelector")
     return (
       <form className="version-selector">
         <label className="version-selector__item">
