@@ -15,6 +15,7 @@ import {
   parseMediaType,
   unknownType
 } from '../scripts/media-type';
+import SelectVersionDatePicker from './select-version-datepicker';
 
 const collapsedViewStorage = 'WebMonitoring.ChangeView.collapsedView';
 const defaultDiffType = 'SIDE_BY_SIDE_RENDERED';
@@ -152,13 +153,15 @@ export default class ChangeView extends React.Component {
     );
   }
 
+
   renderVersionSelector (page) {
-    console.log("versionSelector")
     return (
       <form className="version-selector">
         <label className="version-selector__item">
           <span>From:</span>
-          <SelectVersion versions={page.versions} value={this.props.from} onChange={this.handleFromVersionChange} />
+          {/*<SelectVersion versions={page.versions} value={this.props.from}
+          onChange={this.handleFromVersionChange} />*/}
+          <SelectVersionDatePicker versions={page.versions} value={this.props.from} onChange={this.handleFromVersionChange}/>
         </label>
         <label className="version-selector__item">
           <span>Comparison:</span>
@@ -168,7 +171,6 @@ export default class ChangeView extends React.Component {
             onChange={this.handleDiffTypeChange}
           />
         </label>
-
         <label className="version-selector__item">
           <span>To:</span>
           <SelectVersion versions={page.versions} value={this.props.to} onChange={this.handleToVersionChange} />
