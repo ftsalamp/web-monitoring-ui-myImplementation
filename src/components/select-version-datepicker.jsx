@@ -16,22 +16,18 @@ import Style1 from '../../node_modules/react-datepicker/dist/react-datepicker.cs
  * @param {Version} props.onChange Callback for new selection. `Version => void`
  */
 export default class SelectVersionDatePicker extends DatePicker {
+  constuctor() {
+    this.setState = this.setState.bind(this);
+  }
   render () {
-    // const value = this.props.value ? this.props.value.uuid : '';
     const versions = this.props.versions;
     const handleChange = event => {
       const newValue = timestampsAndHashes[event];
       console.log(timestampsAndHashes[event]);
       this.props.onChange(versions.find(v => v.uuid === newValue));
+      this.state.valueToShow = event.toString();
+      this.state.selectedDate = event;
     };
-
-    // const options = versions.map(version => {
-    //   return (
-    //     <option key={version.uuid} value={version.uuid}>
-    //       {dateFormatter.format(version.capture_time)}
-    //     </option>
-    //   );
-    // });
 
     var timestampsAndHashes = {};
     var capture_times = [];
@@ -46,11 +42,14 @@ export default class SelectVersionDatePicker extends DatePicker {
       capture_times.push(thisMoment);
       timestampsAndHashes[thisMoment] = versions[i].uuid;
     }
-    this.state.capture_times = capture_times;
+    // this.state.valueToShow = capture_times[0].toString();
+    // console.log('This is to be displayed: ' + this.state.valueToShow);
+    // this.state.capture_times = capture_times;
     return (
       <div>
         <link rel="stylesheet" type="text/css" href={Style1}/>
-        <DatePicker includeDates = {capture_times} onChange={handleChange} value={capture_times[0].toString()}/>
+        <DatePicker includeDates = {capture_times} onChange={handleChange}
+          value={this.state.valueToShow} selected={this.state.selectedDate}/>
 
       </div>
     );
