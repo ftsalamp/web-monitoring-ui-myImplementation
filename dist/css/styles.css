@@ -1,0 +1,518 @@
+@import './diff.css';
+
+/* ===== Global ===== */
+html, #web-monitoring-ui-root {
+  height: 100%
+}
+
+#web-monitoring-ui-root {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+}
+
+#application {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+          flex: 1 0 auto;
+}
+
+.container-page-view > .row, .versionista-info, .version-selector {
+  -webkit-box-flex: 0;
+          flex: 0 0 auto;
+}
+
+.change-view {
+  -webkit-box-flex: 1;
+          flex: 1 0 auto;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+}
+
+body {
+    background: #136a8a;
+    background: linear-gradient(45deg, #136a8a, #267871);
+    height: 100%;
+}
+
+.fa {
+    margin-right: 0.5em;
+}
+
+/* ===== Containers ===== */
+.container-list-view, .container-page-view {
+    background: white;
+    color: #444;
+    margin: 5px 0;
+}
+
+.container-page-view {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-flex: 1;
+          flex: 1 0 auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  padding: 15px;
+}
+
+/* ===== Nav Bar ===== */
+#bootstrap-override .navbar-brand {
+    font-size: 1.4em;
+    margin-right: 6px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-decoration: none;
+}
+
+#bootstrap-override .navbar-inverse,
+#bootstrap-override .navbar-inverse a,
+#bootstrap-override .navbar-brand:hover {
+    color: #EEE;
+}
+
+.nav,
+.navbar > .container-fluid {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+#bootstrap-override .navbar-header {
+  margin-right: auto;
+}
+
+.nav > li > a {
+  border: 1px solid #666666;
+  border-radius: 2px;
+  margin: 5px;
+  padding: 5px;
+  text-decoration: none;
+}
+
+#bootstrap-override a.active,
+#bootstrap-override a.active:focus,
+#bootstrap-override a.active:hover {
+  background-color: #337ab7;
+}
+
+.navbar {
+    border-radius: 0;
+    -webkit-box-shadow: 0px 2px 5px rgba(100, 100, 100, 0.7);
+            box-shadow: 0px 2px 5px rgba(100, 100, 100, 0.7);
+    -webkit-box-flex: 0;
+            flex: 0 0 auto;
+    margin-bottom: 0;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.navbar-text {
+    font-size: 2.2rem;
+}
+
+.navbar .auth-status {
+    border: none;
+    line-height: 20px;
+    padding: 15px;
+}
+
+.navbar .auth-status button {
+    display: inline;
+    padding: 0;
+    line-height: inherit;
+    border: none;
+    margin: 0;
+}
+
+/* ===== List View ===== */
+.page-list {
+  table-layout: fixed;
+}
+
+.page-list tbody tr {
+  cursor: pointer;
+}
+
+.page-list tbody tr:hover {
+  background-color: #EEE;
+}
+
+.page-list td {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.page-list th[data-name="capture-date"] {
+  width: 12%;
+}
+
+.page-list th[data-name="site"]  {
+  width: 15%;
+}
+
+.page-list th[data-name="page-name"] {
+  width: 33%;
+}
+
+.page-list th[data-name="url"] {
+  width: 40%;
+}
+
+.search-bar {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 0.5em;
+}
+
+.search-bar input {
+  width: 100%;
+  border: none;
+  font-size: 1.25em;
+  padding: 0.5em 15px;
+}
+
+/* ===== Page Detail View ===== */
+.page-title {
+    font-size: 1.5em;
+    margin-bottom: 0;
+    margin-top: 0.3em;
+}
+
+.pager {
+    display: -webkit-box;
+    display: flex;
+    margin: 0;
+}
+
+.pager li {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-flex: 1;
+            flex: 1;
+}
+
+.pager li > a {
+    background-color: #f7f7f7;
+    border-radius: 3px;
+    -webkit-box-flex: 1;
+            flex: 1;
+}
+
+#bootstrap-override .pager li>a:focus {
+    background-color: #f7f7f7;
+}
+
+#bootstrap-override .pager li>a:hover {
+    background-color: rgba(139, 227, 255, 0.46);
+}
+
+.pager__previous {
+    margin-right: 5px;
+}
+
+.pager__previous .fa {
+    margin-right: 0;
+}
+
+/* Change View */
+.change-view-actions {
+    border-bottom: 1px solid #eee;
+    border-top: 1px solid #eee;
+    margin: 1em 0 0.5em 0;
+    padding: 0.7em 0.2em;
+}
+
+.change-view-actions > div {
+    padding: 0;
+}
+
+.change-view-actions .btn-link {
+    border: none;
+    padding: 0;
+    font-size: inherit;
+    display: inline;
+    line-height: inherit;
+    vertical-align: baseline;
+}
+
+/* Version Selector */
+.version-selector {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: justify;
+            justify-content: space-between;
+    margin: 0.5em 0;
+}
+
+.version-selector__item {
+    font-weight: normal;
+}
+
+.version-selector__item > span {
+    font-weight: bold;
+    margin-right: 0.5em;
+}
+/* END - Version Selector */
+
+/* ===== Annotation Form ===== */
+.lnk-action {
+    margin-right: 17px;
+}
+
+.annotation-form {
+    margin: 0.4em 0;
+}
+
+.annotation-form__signifiers {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: justify;
+            justify-content: space-between;
+    margin-bottom: 0.5em;
+    width: 100%;
+}
+
+.annotation-form textarea {
+    border: 1px solid #c3c3c3;
+    border-radius: 3px;
+    color: #555;
+    height: 3em;
+    padding: 0.5em;
+    width: 100%;
+}
+
+legend {
+    border: 0;
+    color: inherit;
+    font-size: 0.9em;
+    font-weight: 500;
+    margin: 0 0 0.5em 0;
+}
+
+.signifier-list, .signifier-list-item {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.signifier-list {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+}
+
+/* Remove margin from last signifier button  */
+.signifier-list > li:last-child {
+    margin: 0;
+}
+
+.signifier-list-item {
+    display: -webkit-box;
+    display: flex;
+    margin-right: 5px;
+}
+
+.annotation-form--collapsed .signifier-list {
+    -webkit-box-align: center;
+            align-items: center;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+            flex-direction: row;
+    text-align: center;
+}
+
+/* Toggle buttons */
+.toggle {
+    opacity: 0;
+    width: 0;
+}
+
+.toggle-btn {
+    cursor: pointer;
+}
+
+.toggle + .toggle-btn::before {
+    background: #e2e1e1;
+    border: 1px solid hsla(0, 0%, 20%, 0.1);
+    border-radius: 2px;
+    color: #5a5959;
+    content: attr(data-fieldNumber);
+    display: inline-block;
+    cursor: pointer;
+    flex-shrink: 0;
+    font-family: sans-serif;
+    font-weight: bold;
+    height: 2em;
+    line-height: 2em;
+    text-align: center;
+    -webkit-transition: all .1s;
+    transition: all .1s;
+    width: 3.5em;
+}
+
+.toggle:checked + .toggle-btn::before {
+    background: #24a79d;
+}
+
+.toggle:checked + .toggle-btn::before {
+    color: #fff;
+}
+
+.toggle:focus + .toggle-btn::before {
+    outline: rgb(59, 153, 252) auto 2px;
+    outline: -moz-mac-focusring auto 3px;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.toggle-btn span {
+    font-size: 12px;
+    font-weight: 400;
+    margin: 5px 0 0 5px;
+}
+/* END - Toggle buttons */
+
+/* Media queries */
+@media (max-width: 1000px) {
+    .page-title {
+        margin-bottom: 10px;
+    }
+    .annotation-form__signifiers, .version-selector {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+                flex-direction: column;
+    }
+
+    .version-selector > * {
+        margin: 0.5em 0;
+    }
+
+    .version-selector > select {
+        max-width: 215px;
+        margin-left: 16px;
+        margin-bottom: 10px;
+    }
+
+    legend {
+        margin-top: 1em;
+    }
+
+    /* TODO: Hacky, can probably clean this up when we remove Bootstrap */
+    .change-view-actions .text-right {
+        text-align: left;
+    }
+}
+
+/* ===== Diff View ===== */
+.diff {
+    height:100vh;
+}
+
+iframe {
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    width: 100%;
+}
+
+/* ===== Progress bar ===== */
+.dotdotdot:after {
+  font-weight: 300;
+  content: '...';
+  display: inline-block;
+  width: 20px;
+  text-align: left;
+  -webkit-animation: dotdotdot 1.5s linear infinite;
+          animation: dotdotdot 1.5s linear infinite;
+}
+
+@-webkit-keyframes dotdotdot {
+  0%   { content: '...'; }
+  25% { content: ''; }
+  50% { content: '.'; }
+  75% { content: '..'; }
+}
+
+@keyframes dotdotdot {
+  0%   { content: '...'; }
+  25% { content: ''; }
+  50% { content: '.'; }
+  75% { content: '..'; }
+}
+
+/* ===== Login Form ===== */
+.dialog__body {
+    background: white;
+    border-radius: 3px;
+    padding: 1em;
+}
+
+.login-form {
+    width: 24em;
+}
+
+.login-form h1 {
+    margin: 0 0 1em;
+}
+
+.login-form .form-group {
+    width: 100%;
+}
+
+.login-form__footer {
+    text-align: right;
+}
+
+.loading {
+  -webkit-box-align: center;
+          align-items: center;
+  background: transparent;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+.versionista-info {
+  margin-top: 1em;
+}
+
+.versionista-info i {
+  margin-left: 0.5em;
+}
+
+/* ===== Environment Banner ====== */
+.environment-banner {
+  color: #333;
+}
+
+.environment-banner p {
+  display: inline-block;
+  margin: 10px 0;
+}
+
+.environment-banner .close-x {
+  float: right;
+  margin: 10px;
+}
+
+.environment-banner .close-x:hover {
+  cursor: pointer;
+}
