@@ -173,7 +173,7 @@ export default class ChangeView extends React.Component {
         </label>
         <label className="version-selector__item">
           <span>To:</span>
-          <SelectVersion versions={page.versions} value={this.props.to} onChange={this.handleToVersionChange} />
+          <SelectVersionDatePicker versions={page.versions} value={this.props.to} onChange={this.handleToVersionChange}/>
         </label>
       </form>
     );
